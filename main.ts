@@ -1,3 +1,4 @@
+let missile: Sprite = null
 let duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . b 5 b . . . 
@@ -18,3 +19,27 @@ let duck = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(duck)
 duck.setStayInScreen(true)
+let missile_count = 0
+game.onUpdateInterval(500, function () {
+    if (missile_count < 3) {
+        missile = sprites.create(img`
+            . . . . . . . 1 1 . . . . . . . 
+            . . . . . . 1 1 1 1 . . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            `, SpriteKind.Projectile)
+        missile_count += 1
+    }
+})
