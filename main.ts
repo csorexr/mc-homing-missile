@@ -1,3 +1,24 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    otherSprite.destroy(effects.bubbles, 200)
+})
+function set_to_edge (spr: Sprite) {
+    if (Math.percentChance(50)) {
+        if (Math.percentChance(50)) {
+            spr.setPosition(20, randint(20, 100))
+        } else {
+            spr.setPosition(140, randint(20, 100))
+        }
+    } else {
+        if (Math.percentChance(50)) {
+            spr.setPosition(randint(20, 140), 15)
+        } else {
+            spr.setPosition(randint(20, 140), 105)
+        }
+    }
+}
+sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
+    missile_count += -1
+})
 let missile: Sprite = null
 let duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -40,6 +61,7 @@ game.onUpdateInterval(500, function () {
             . . . . . 1 1 1 1 1 1 . . . . . 
             . . . . . 1 1 1 1 1 1 . . . . . 
             `, SpriteKind.Projectile)
+        set_to_edge(missile)
         missile_count += 1
     }
 })
