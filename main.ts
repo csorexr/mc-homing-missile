@@ -1,3 +1,6 @@
+function set_missile_follow (spr: Sprite) {
+    spr.follow(duck, 30)
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     otherSprite.destroy(effects.bubbles, 200)
 })
@@ -20,7 +23,8 @@ sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
     missile_count += -1
 })
 let missile: Sprite = null
-let duck = sprites.create(img`
+let duck: Sprite = null
+duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . b 5 b . . . 
     . . . . . . . . . b 5 b . . . . 
@@ -62,6 +66,7 @@ game.onUpdateInterval(500, function () {
             . . . . . 1 1 1 1 1 1 . . . . . 
             `, SpriteKind.Projectile)
         set_to_edge(missile)
+        set_missile_follow(missile)
         missile_count += 1
     }
 })
