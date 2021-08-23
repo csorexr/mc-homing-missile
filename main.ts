@@ -1,6 +1,82 @@
 function set_missile_follow (spr: Sprite) {
     spr.follow(duck, 30)
 }
+function init_missile_graphics () {
+    missile_graphics = [
+    img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,
+    img`
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . . 1 1 1 1 . . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
+        `,
+    img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        . . 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `,
+    img`
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . . 1 1 1 1 . . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        `
+    ]
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     otherSprite.destroy(effects.bubbles, 200)
 })
@@ -19,10 +95,16 @@ function set_to_edge (spr: Sprite) {
         }
     }
 }
+function update_course () {
+    for (let value of sprites.allOfKind(SpriteKind.Projectile)) {
+        value.setImage(missile_graphics[2])
+    }
+}
 sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
     missile_count += -1
 })
 let missile: Sprite = null
+let missile_graphics: Image[] = []
 let duck: Sprite = null
 duck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -45,6 +127,8 @@ duck = sprites.create(img`
 controller.moveSprite(duck)
 duck.setStayInScreen(true)
 let missile_count = 0
+let missile_graphics_count = 4
+init_missile_graphics()
 game.onUpdateInterval(500, function () {
     if (missile_count < 3) {
         missile = sprites.create(img`
@@ -69,4 +153,5 @@ game.onUpdateInterval(500, function () {
         set_missile_follow(missile)
         missile_count += 1
     }
+    update_course()
 })
