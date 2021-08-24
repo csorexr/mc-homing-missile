@@ -1,3 +1,6 @@
+function mAtan2 (dy: number, dx: number) {
+	
+}
 function set_missile_follow (spr: Sprite) {
     spr.follow(duck, 30)
 }
