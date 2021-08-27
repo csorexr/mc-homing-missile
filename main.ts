@@ -22,6 +22,11 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 function set_missile_follow (spr: Sprite) {
     spr.follow(duck, 30)
 }
+function update_missile_course_simple (spr: Sprite) {
+    angle_target = mAtan2(duck.y - spr.y, duck.x - spr.x)
+    spr.setVelocity(missile_speed * Math.cos(angle_target), missile_speed * Math.sin(angle_target))
+    spr.setImage(missile_graphics[Math.round((angle_target * missile_graphics_count - m_pi) / (2 * m_pi))])
+}
 function chooseMode (init_choice: number) {
     generate_menu(["Level 1", "Level 2", "Level 3"])
     menu_current_choice = init_choice
@@ -298,11 +303,11 @@ function initGame () {
     if (0 == game_mode) {
     	
     } else if (1 == game_mode) {
-        missile_graphics_count = 4
-        init_missile_graphics(4)
+        missile_graphics_count = 8
+        init_missile_graphics(missile_graphics_count)
     } else {
         missile_graphics_count = 8
-        init_missile_graphics(8)
+        init_missile_graphics(missile_graphics_count)
     }
 }
 function set_to_edge (spr: Sprite) {
@@ -336,29 +341,32 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function update_course () {
     for (let value of sprites.allOfKind(SpriteKind.Projectile)) {
-        value.setImage(missile_graphics[2])
+        update_missile_course_simple(value)
     }
 }
 sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
     missile_count += -1
 })
 let missile: Sprite = null
-let missile_graphics_count = 0
 let missile_count = 0
 let textSprite: TextSprite = null
+let missile_graphics_count = 0
 let missile_graphics: Image[] = []
+let angle_target = 0
 let duck: Sprite = null
 let menu_item_list: TextSprite[] = []
 let menu_current_choice = 0
 let m_tan2 = 0
+let missile_speed = 0
 let game_mode = 0
 let global_phase = 0
 let m_pi = 0
 m_pi = 3.1415926
 global_phase = 0
 game_mode = 2
+missile_speed = 30
 chooseMode(game_mode)
-game.onUpdateInterval(500, function () {
+game.onUpdateInterval(200, function () {
     if (1 == global_phase) {
         if (missile_count < 3) {
             missile = sprites.create(img`
