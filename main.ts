@@ -40,7 +40,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function init_missile_graphics (count: number) {
-    if (4 == count) {
+    if (8 == count) {
         missile_graphics = [
         img`
             . . . . . . . . . . . . . . . . 
@@ -61,6 +61,24 @@ function init_missile_graphics (count: number) {
             . . . . . . . . . . . . . . . . 
             `,
         img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . 1 1 1 . . . . . . . . . . 
+            . . 1 1 1 1 1 . . . . . . . . . 
+            . 1 1 1 1 1 1 1 . . . . . . . . 
+            . 1 1 1 1 1 1 1 1 . . . . . . . 
+            . . 1 1 1 1 1 1 1 1 . . . . . . 
+            . . . 1 1 1 1 1 1 1 1 . . . . . 
+            . . . . 1 1 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 1 1 . . . 
+            . . . . . . 1 1 1 1 1 1 1 1 . . 
+            . . . . . . . 1 1 1 1 1 1 1 . . 
+            . . . . . . . . 1 1 1 1 1 1 . . 
+            . . . . . . . . . 1 1 1 1 1 . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
             . . . . . 1 1 1 1 1 1 . . . . . 
             . . . . . 1 1 1 1 1 1 . . . . . 
             . . . . . 1 1 1 1 1 1 . . . . . 
@@ -81,6 +99,24 @@ function init_missile_graphics (count: number) {
         img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . 1 1 1 . . . 
+            . . . . . . . . . 1 1 1 1 1 . . 
+            . . . . . . . . 1 1 1 1 1 1 1 . 
+            . . . . . . . 1 1 1 1 1 1 1 1 . 
+            . . . . . . 1 1 1 1 1 1 1 1 . . 
+            . . . . . 1 1 1 1 1 1 1 1 . . . 
+            . . . . 1 1 1 1 1 1 1 1 . . . . 
+            . . . 1 1 1 1 1 1 1 1 . . . . . 
+            . . 1 1 1 1 1 1 1 1 . . . . . . 
+            . . 1 1 1 1 1 1 1 . . . . . . . 
+            . . 1 1 1 1 1 1 . . . . . . . . 
+            . . 1 1 1 1 1 . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -93,6 +129,24 @@ function init_missile_graphics (count: number) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . 1 1 1 1 1 . . . . . . . . . 
+            . . 1 1 1 1 1 1 . . . . . . . . 
+            . . 1 1 1 1 1 1 1 . . . . . . . 
+            . . 1 1 1 1 1 1 1 1 . . . . . . 
+            . . . 1 1 1 1 1 1 1 1 . . . . . 
+            . . . . 1 1 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 1 1 . . . 
+            . . . . . . 1 1 1 1 1 1 1 1 . . 
+            . . . . . . . 1 1 1 1 1 1 1 1 . 
+            . . . . . . . . 1 1 1 1 1 1 1 . 
+            . . . . . . . . . 1 1 1 1 1 . . 
+            . . . . . . . . . . 1 1 1 . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `,
@@ -113,9 +167,27 @@ function init_missile_graphics (count: number) {
             . . . . . 1 1 1 1 1 1 . . . . . 
             . . . . . 1 1 1 1 1 1 . . . . . 
             . . . . . 1 1 1 1 1 1 . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . 1 1 1 1 1 . . 
+            . . . . . . . . 1 1 1 1 1 1 . . 
+            . . . . . . . 1 1 1 1 1 1 1 . . 
+            . . . . . . 1 1 1 1 1 1 1 1 . . 
+            . . . . . 1 1 1 1 1 1 1 1 . . . 
+            . . . . 1 1 1 1 1 1 1 1 . . . . 
+            . . . 1 1 1 1 1 1 1 1 . . . . . 
+            . . 1 1 1 1 1 1 1 1 . . . . . . 
+            . 1 1 1 1 1 1 1 1 . . . . . . . 
+            . 1 1 1 1 1 1 1 . . . . . . . . 
+            . . 1 1 1 1 1 . . . . . . . . . 
+            . . . 1 1 1 . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             `
         ]
-    } else if (8 == count) {
+    } else if (16 == count) {
         missile_graphics = [
         img`
             . . . . . . . . . . . . . . . . 
@@ -138,6 +210,24 @@ function init_missile_graphics (count: number) {
         img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . 1 . . . . . . . . . . . . 
+            . . . 1 1 1 . . . . . . . . . . 
+            . . 1 1 1 1 1 1 . . . . . . . . 
+            . 1 1 1 1 1 1 1 1 1 . . . . . . 
+            . 1 1 1 1 1 1 1 1 1 1 1 . . . . 
+            . 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+            . . . 1 1 1 1 1 1 1 1 1 1 1 1 . 
+            . . . . . 1 1 1 1 1 1 1 1 1 1 . 
+            . . . . . . . 1 1 1 1 1 1 1 1 1 
+            . . . . . . . . . . 1 1 1 1 1 1 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . 1 1 1 . . . . . . . . . . 
             . . 1 1 1 1 1 . . . . . . . . . 
             . 1 1 1 1 1 1 1 . . . . . . . . 
@@ -152,6 +242,24 @@ function init_missile_graphics (count: number) {
             . . . . . . . . . 1 1 1 1 1 . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . 1 1 1 . . . . . . . 
+            . . . . . 1 1 1 1 . . . . . . . 
+            . . . 1 1 1 1 1 1 1 . . . . . . 
+            . . . . 1 1 1 1 1 1 . . . . . . 
+            . . . . 1 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 1 . . . . 
+            . . . . . . 1 1 1 1 1 1 . . . . 
+            . . . . . . 1 1 1 1 1 1 . . . . 
+            . . . . . . . 1 1 1 1 1 1 . . . 
+            . . . . . . . 1 1 1 1 1 1 . . . 
+            . . . . . . . . 1 1 1 1 1 . . . 
+            . . . . . . . . 1 1 1 1 1 . . . 
+            . . . . . . . . . 1 1 1 1 . . . 
+            . . . . . . . . . . . 1 1 . . . 
             `,
         img`
             . . . . . 1 1 1 1 1 1 . . . . . 
@@ -173,6 +281,24 @@ function init_missile_graphics (count: number) {
             `,
         img`
             . . . . . . . . . . . . . . . . 
+            . . . . . . . 1 1 1 . . . . . . 
+            . . . . . . . 1 1 1 1 . . . . . 
+            . . . . . . 1 1 1 1 1 1 1 . . . 
+            . . . . . . 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . 1 1 1 1 1 1 1 . . . . . 
+            . . . . 1 1 1 1 1 1 . . . . . . 
+            . . . . 1 1 1 1 1 1 . . . . . . 
+            . . . 1 1 1 1 1 1 . . . . . . . 
+            . . . 1 1 1 1 1 1 . . . . . . . 
+            . . . 1 1 1 1 1 . . . . . . . . 
+            . . . 1 1 1 1 1 . . . . . . . . 
+            . . . 1 1 1 1 . . . . . . . . . 
+            . . . 1 1 . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . 1 1 1 . . . 
             . . . . . . . . . 1 1 1 1 1 . . 
@@ -186,6 +312,24 @@ function init_missile_graphics (count: number) {
             . . 1 1 1 1 1 1 1 . . . . . . . 
             . . 1 1 1 1 1 1 . . . . . . . . 
             . . 1 1 1 1 1 . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . 1 . . . 
+            . . . . . . . . . . 1 1 1 . . . 
+            . . . . . . . . 1 1 1 1 1 1 . . 
+            . . . . . . 1 1 1 1 1 1 1 1 1 . 
+            . . . . 1 1 1 1 1 1 1 1 1 1 1 . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+            . 1 1 1 1 1 1 1 1 1 1 1 1 . . . 
+            . 1 1 1 1 1 1 1 1 1 1 . . . . . 
+            1 1 1 1 1 1 1 1 1 . . . . . . . 
+            1 1 1 1 1 1 . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `,
@@ -210,6 +354,24 @@ function init_missile_graphics (count: number) {
         img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            1 1 1 1 1 1 . . . . . . . . . . 
+            1 1 1 1 1 1 1 1 1 . . . . . . . 
+            . 1 1 1 1 1 1 1 1 1 1 . . . . . 
+            . 1 1 1 1 1 1 1 1 1 1 1 1 . . . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 1 1 . 
+            . . . . 1 1 1 1 1 1 1 1 1 1 1 . 
+            . . . . . . 1 1 1 1 1 1 1 1 1 . 
+            . . . . . . . . 1 1 1 1 1 1 . . 
+            . . . . . . . . . . 1 1 1 . . . 
+            . . . . . . . . . . . . 1 . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . 1 1 1 1 1 . . . . . . . . . 
             . . 1 1 1 1 1 1 . . . . . . . . 
             . . 1 1 1 1 1 1 1 . . . . . . . 
@@ -223,6 +385,24 @@ function init_missile_graphics (count: number) {
             . . . . . . . . . 1 1 1 1 1 . . 
             . . . . . . . . . . 1 1 1 . . . 
             . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . 1 1 . . . . . . . . . . . 
+            . . . 1 1 1 1 . . . . . . . . . 
+            . . . 1 1 1 1 1 . . . . . . . . 
+            . . . 1 1 1 1 1 . . . . . . . . 
+            . . . 1 1 1 1 1 1 . . . . . . . 
+            . . . 1 1 1 1 1 1 . . . . . . . 
+            . . . . 1 1 1 1 1 1 . . . . . . 
+            . . . . 1 1 1 1 1 1 . . . . . . 
+            . . . . 1 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . . 1 1 1 1 1 1 1 . . . . 
+            . . . . . . 1 1 1 1 1 1 . . . . 
+            . . . . . . 1 1 1 1 1 1 1 . . . 
+            . . . . . . . 1 1 1 1 . . . . . 
+            . . . . . . . 1 1 1 . . . . . . 
             . . . . . . . . . . . . . . . . 
             `,
         img`
@@ -244,6 +424,24 @@ function init_missile_graphics (count: number) {
             . . . . . 1 1 1 1 1 1 . . . . . 
             `,
         img`
+            . . . . . . . . . . . 1 1 . . . 
+            . . . . . . . . . 1 1 1 1 . . . 
+            . . . . . . . . 1 1 1 1 1 . . . 
+            . . . . . . . . 1 1 1 1 1 . . . 
+            . . . . . . . 1 1 1 1 1 1 . . . 
+            . . . . . . . 1 1 1 1 1 1 . . . 
+            . . . . . . 1 1 1 1 1 1 . . . . 
+            . . . . . . 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 . . . . . 
+            . . . . 1 1 1 1 1 1 1 . . . . . 
+            . . . . 1 1 1 1 1 1 . . . . . . 
+            . . . 1 1 1 1 1 1 1 . . . . . . 
+            . . . . . 1 1 1 1 . . . . . . . 
+            . . . . . . 1 1 1 . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . 1 1 1 1 1 . . 
@@ -258,6 +456,24 @@ function init_missile_graphics (count: number) {
             . 1 1 1 1 1 1 1 . . . . . . . . 
             . . 1 1 1 1 1 . . . . . . . . . 
             . . . 1 1 1 . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,
+        img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . 1 1 1 1 1 1 
+            . . . . . . . 1 1 1 1 1 1 1 1 1 
+            . . . . . 1 1 1 1 1 1 1 1 1 1 . 
+            . . . 1 1 1 1 1 1 1 1 1 1 1 1 . 
+            . 1 1 1 1 1 1 1 1 1 1 1 1 1 . . 
+            . 1 1 1 1 1 1 1 1 1 1 1 . . . . 
+            . 1 1 1 1 1 1 1 1 1 . . . . . . 
+            . . 1 1 1 1 1 1 . . . . . . . . 
+            . . . 1 1 1 . . . . . . . . . . 
+            . . . 1 . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `
@@ -303,10 +519,10 @@ function initGame () {
     if (0 == game_mode) {
     	
     } else if (1 == game_mode) {
-        missile_graphics_count = 8
+        missile_graphics_count = 16
         init_missile_graphics(missile_graphics_count)
     } else {
-        missile_graphics_count = 8
+        missile_graphics_count = 16
         init_missile_graphics(missile_graphics_count)
     }
 }
@@ -325,6 +541,20 @@ function set_to_edge (spr: Sprite) {
         }
     }
 }
+function update_missile_course_progressing (spr: Sprite) {
+    angle_target = mAtan2(duck.y - spr.y, duck.x - spr.x)
+    angle_current = mAtan2(spr.vy, spr.vx)
+    angle_delta = angle_target - angle_current
+    if (angle_delta > m_pi) {
+        angle_delta = angle_delta - 2 * m_pi
+    } else if (angle_delta < 0 - m_pi) {
+        angle_delta = angle_delta + 2 * m_pi
+    }
+    angle_delta = Math.constrain(angle_delta, 0 - angle_step, angle_step)
+    angle_modified = angle_current + angle_delta
+    spr.setVelocity(missile_speed * Math.cos(angle_modified), missile_speed * Math.sin(angle_modified))
+    spr.setImage(missile_graphics[Math.round((angle_modified * missile_graphics_count - m_pi) / (2 * m_pi))])
+}
 function update_menu () {
     for (let value of menu_item_list) {
         value.setBorder(0, 6)
@@ -341,13 +571,22 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function update_course () {
     for (let value of sprites.allOfKind(SpriteKind.Projectile)) {
-        update_missile_course_simple(value)
+        if (0 == game_mode) {
+        	
+        } else if (1 == game_mode) {
+            update_missile_course_simple(value)
+        } else {
+            update_missile_course_progressing(value)
+        }
     }
 }
 sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
     missile_count += -1
 })
 let missile: Sprite = null
+let angle_modified = 0
+let angle_delta = 0
+let angle_current = 0
 let missile_count = 0
 let textSprite: TextSprite = null
 let missile_graphics_count = 0
@@ -360,13 +599,15 @@ let m_tan2 = 0
 let missile_speed = 0
 let game_mode = 0
 let global_phase = 0
+let angle_step = 0
 let m_pi = 0
 m_pi = 3.1415926
+angle_step = m_pi / 9
 global_phase = 0
 game_mode = 2
-missile_speed = 30
+missile_speed = 15
 chooseMode(game_mode)
-game.onUpdateInterval(200, function () {
+game.onUpdateInterval(350, function () {
     if (1 == global_phase) {
         if (missile_count < 3) {
             missile = sprites.create(img`
@@ -388,7 +629,9 @@ game.onUpdateInterval(200, function () {
                 . . . . . 1 1 1 1 1 1 . . . . . 
                 `, SpriteKind.Projectile)
             set_to_edge(missile)
-            set_missile_follow(missile)
+            if (0 == game_mode) {
+                set_missile_follow(missile)
+            }
             missile_count += 1
         }
         update_course()
