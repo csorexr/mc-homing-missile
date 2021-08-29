@@ -577,6 +577,7 @@ function update_course () {
             update_missile_course_simple(value)
         } else {
             update_missile_course_progressing(value)
+            value.startEffect(effects.trail, 100)
         }
     }
 }
